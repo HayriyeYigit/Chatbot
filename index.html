@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>ChatBot</header>
+    <div class="container mt-16" id="msgContainer">
+      <div class="msg">Hi, stelle mir Deine Frage</div>
+    </div>
+    <form
+      class="container container-bottom"
+      onsubmit="postChatMessage();return false;"
+    >
+      <input type="text" placeholder="Bitte Fragen stellen..." id="chatField" />
+      <button>Fragen</button>
+    </form>
+
+    <script src="script.js"></script>
+  </body>
+</html>
