@@ -4,7 +4,7 @@ function postChatMessage(message) {
 }
 async function askChatGPT(question) {
   const apiKey = 'DEIN_API_SCHLÜSSEL_HIER';
-  const apiURL = 'https://api.openai.com/v1/engines/davinci/completions';
+  const apiURL = 'https://api.openai.com/v1/engines/gpt-4/completions';
 
   const response = await fetch(apiURL, {
     method: 'POST',
@@ -13,16 +13,15 @@ async function askChatGPT(question) {
       'Authorization': `Bearer ${apiKey}`
     },
     body: JSON.stringify({
-      model: 'gpt-4',
-      messages: [
-        {
-            role:'user',    
-        }
+      prompt: question,
+      max_tokens: 150
+    })
+            
     });
   if (!response.ok) {
     throw new Error(`Fehler: ${response.statusText}`);
   }     
     const data = await response.json();
-    return data.choices[0].text;
+    return data.choices[0].text.trim();
 
 }       
